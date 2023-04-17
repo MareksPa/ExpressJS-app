@@ -7,10 +7,10 @@ const logger = require("morgan");
 const convert = require("xml-js");
 const express = require("express");
 //routers
-const indexRouter = require("./routes/index");
-const environmentRouter = require("./routes/environment");
-const headersRouter = require("./routes/headers");
-const postRouter = require("./routes/post");
+const indexRouter = require("./api/index");
+const environmentRouter = require("./api/environment");
+const headersRouter = require("./api/headers");
+const postRouter = require("./api/post");
 //environment colors
 const bgColor = process.env.bgColor;
 const fgColor = process.env.fgColor;
@@ -26,9 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
-app.use("/routes/environment", environmentRouter);
-app.use("/routes/headers", headersRouter);
-app.use("/routes/post", postRouter);
+app.use("/api/environment", environmentRouter);
+app.use("/api/headers", headersRouter);
+app.use("/api/post", postRouter);
 
 app.get("/", function (req, res) {
   res.render("index", {
