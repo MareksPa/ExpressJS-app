@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const convert = require("xml-js");
 const express = require("express");
-//routes
+//routers
 const indexRouter = require("./routes/index");
 const environmentRouter = require("./routes/environment");
 const headersRouter = require("./routes/headers");
@@ -30,14 +30,12 @@ app.use("/routes/environment", environmentRouter);
 app.use("/routes/headers", headersRouter);
 app.use("/routes/post", postRouter);
 
-
 app.get("/", function (req, res) {
   res.render("index", {
     backgroundColor: process.env.bgColor,
     color: process.env.fgColor,
   });
 });
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
