@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-/* GET  */
 router.get("/", (req, res) => {
   const format = (req.query.format || "html").toLowerCase();
   const envVars = process.env;
